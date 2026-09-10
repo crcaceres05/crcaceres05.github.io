@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renato Cáceres — QA Automation Engineer → Data Engineering</title>
+<meta name="description" content="QA Automation Engineer con 16+ años de experiencia, en transición hacia Data Engineering. Python, SQL, Selenium, dbt, Airflow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F1F4F1;
+    --paper-alt: #E7EDE8;
+    --ink: #16211D;
+    --muted: #5C6B62;
+    --line: #D3DBD4;
+    --green: #2E6F4E;
+    --green-soft: #DCE9E0;
+    --amber: #B4712A;
+    --amber-soft: #F1E1CC;
+    --max: 780px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  a{color:var(--green); text-decoration-thickness:1.5px; text-underline-offset:3px;}
+  a:hover{color:var(--amber);}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  .wrap-wide{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  /* Nav */
+  nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(241,244,241,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:920px; margin:0 auto; padding:16px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'Space Grotesk', sans-serif; font-size:15px;
+  }
+  .nav-name{font-weight:600; color:var(--ink); text-decoration:none;}
+  .nav-links{display:flex; gap:22px; list-style:none; margin:0; padding:0;}
+  .nav-links a{color:var(--muted); text-decoration:none; font-weight:500;}
+  .nav-links a:hover{color:var(--green);}
+  .nav-cv{
+    background:var(--ink); color:var(--paper) !important;
+    padding:7px 16px; border-radius:3px; font-weight:500;
+  }
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:4px;}
+  .nav-toggle svg{display:block;}
+
+  /* Hero */
+  header.hero{padding:76px 0 56px;}
+  .eyebrow{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--green); font-weight:500; font-size:15px; margin-bottom:14px;
+  }
+  h1.title{
+    font-size:44px; line-height:1.12; margin:0 0 20px;
+    max-width:11ch;
+  }
+  .lede{
+    font-size:20px; color:var(--muted); max-width:52ch; margin:0 0 30px;
+  }
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:8px 22px;
+    font-family:'Space Grotesk', sans-serif; font-size:14px; color:var(--muted);
+    margin-bottom:44px;
+  }
+
+  /* Pipeline diagram */
+  .pipeline{
+    display:flex; align-items:flex-start; gap:0;
+    overflow-x:auto; padding:6px 2px 4px;
+    margin-bottom:6px;
+  }
+  .stage{
+    display:flex; flex-direction:column; align-items:center;
+    flex:1; min-width:104px; position:relative;
+  }
+  .stage .dot{
+    width:15px; height:15px; border-radius:50%;
+    border:2.5px solid var(--green);
+    background:var(--green);
+    margin-bottom:10px; z-index:2;
+  }
+  .stage.current .dot{
+    background:var(--amber); border-color:var(--amber);
+    box-shadow:0 0 0 5px var(--amber-soft);
+  }
+  .stage.next .dot{
+    background:var(--paper); border-color:var(--line);
+  }
+  .stage .connector{
+    position:absolute; top:6px; left:-50%; width:100%; height:2.5px;
+    background:var(--green); z-index:1;
+  }
+  .stage:first-child .connector{display:none;}
+  .stage.next .connector, .stage.current ~ .stage .connector{background:var(--line);}
+  .stage .label{
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:13px;
+    text-align:center; color:var(--ink);
+  }
+  .stage.next .label{color:var(--muted);}
+  .stage .sublabel{
+    font-size:12px; color:var(--muted); text-align:center; margin-top:3px;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:40px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:15px;
+    padding:11px 22px; border-radius:3px; text-decoration:none; display:inline-block;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--green); color:var(--paper);}
+  .btn-ghost{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--green); color:var(--green);}
+
+  /* Sections */
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--line);}
+  h2.section-title{font-size:26px; margin:0 0 28px;}
+
+  .about-text{max-width:64ch;}
+  .about-text p{margin:0 0 18px;}
+
+  /* Principles */
+  .principles{display:grid; grid-template-columns:1fr 1fr; gap:34px 40px;}
+  .principle .tag{
+    display:inline-block; font-family:'Space Grotesk', sans-serif;
+    font-size:13px; font-weight:600; color:var(--green);
+    background:var(--green-soft); padding:4px 10px; border-radius:3px;
+    margin-bottom:12px;
+  }
+  .principle h3{font-size:19px; margin:0 0 8px;}
+  .principle p{font-size:16px; color:var(--muted); margin:0;}
+
+  /* Experience */
+  .job{
+    display:grid; grid-template-columns:140px 1fr; gap:20px;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .job:last-child{border-bottom:none;}
+  .job-dates{
+    font-family:'Space Grotesk', sans-serif; font-size:13px; color:var(--muted);
+    padding-top:3px;
+  }
+  .job-role{font-size:19px; margin:0 0 3px; font-weight:600;}
+  .job-co{
+    font-family:'Space Grotesk', sans-serif; font-size:14px; color:var(--green);
+    margin:0 0 10px; font-weight:500;
+  }
+  .job p.desc{font-size:16px; margin:0; color:var(--ink);}
+  .company-group{margin-bottom:8px;}
+  .company-group > .company-name{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:16px;
+    padding-top:22px; color:var(--ink);
+  }
+  .company-group > .company-meta{
+    font-size:13px; color:var(--muted); font-family:'Space Grotesk', sans-serif;
+    margin-top:2px;
+  }
+  .earlier-note{
+    font-size:15px; color:var(--muted); padding:18px 0 0;
+  }
+
+  /* Projects */
+  .projects{display:flex; flex-direction:column; gap:0;}
+  .project{
+    display:grid; grid-template-columns:1fr; gap:10px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .project:last-child{border-bottom:none;}
+  .project-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;}
+  .project h3{font-size:20px; margin:0;}
+  .project-link{font-family:'Space Grotesk', sans-serif; font-size:14px; font-weight:600;}
+  .project p{font-size:16px; margin:6px 0 12px; color:var(--ink); max-width:64ch;}
+  .stack-pills{display:flex; flex-wrap:wrap; gap:7px;}
+  .pill{
+    font-family:'Space Grotesk', sans-serif; font-size:12.5px; font-weight:500;
+    color:var(--muted); background:var(--paper-alt); border:1px solid var(--line);
+    padding:4px 10px; border-radius:20px;
+  }
+
+  /* Skills */
+  .skills-cols{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  .skills-col h3{
+    font-family:'Space Grotesk', sans-serif; font-size:15px; font-weight:600;
+    color:var(--green); margin:0 0 14px;
+  }
+  .skills-col.learning h3{color:var(--amber);}
+  .skills-col ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+  .skills-col li{
+    font-family:'Space Grotesk', sans-serif; font-size:13.5px; color:var(--ink);
+    background:var(--paper-alt); border:1px solid var(--line);
+    padding:5px 11px; border-radius:20px;
+  }
+  .skills-col.learning li{background:var(--amber-soft); border-color:#E4C79A;}
+
+  .cert-list{margin-top:34px;}
+  .cert-list h3{
+    font-family:'Space Grotesk', sans-serif; font-size:15px; font-weight:600;
+    color:var(--muted); margin:0 0 12px;
+  }
+  .cert-list ul{margin:0; padding-left:18px; font-size:15px; color:var(--muted);}
+  .cert-list li{margin-bottom:5px;}
+
+  /* Contact */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px 40px; margin-top:8px;}
+  .contact-item .k{
+    font-family:'Space Grotesk', sans-serif; font-size:13px; color:var(--muted);
+    margin-bottom:3px;
+  }
+  .contact-item .v{font-size:17px;}
+  footer{
+    text-align:center; padding:32px 0 44px; font-size:13px; color:var(--muted);
+    font-family:'Space Grotesk', sans-serif;
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  header.hero{animation:fadeUp 0.6s ease-out;}
+
+  @media (max-width:640px){
+    body{font-size:17px;}
+    h1.title{font-size:32px; max-width:none;}
+    .lede{font-size:18px;}
+    .principles{grid-template-columns:1fr;}
+    .skills-cols{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .job{grid-template-columns:1fr; gap:6px;}
+    .nav-links{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      background:var(--paper); flex-direction:column; gap:0;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:14px 28px; border-top:1px solid var(--line); width:100%;}
+    .nav-toggle{display:block;}
+    .stage .label{font-size:11.5px;}
+    .stage .sublabel{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Renato Cáceres</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#experience">Experiencia</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#skills">Stack</a></li>
+      <li><a href="#contact" class="nav-cv">Contacto</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <svg width="22" height="16" viewBox="0 0 22 16"><rect width="22" height="2" fill="#16211D"/><rect y="7" width="22" height="2" fill="#16211D"/><rect y="14" width="22" height="2" fill="#16211D"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="top"></div>
+<header class="hero">
+  <div class="wrap-wide">
+    <div class="eyebrow">Guatemala City · Remoto, equipos internacionales</div>
+    <h1 class="title">De pruebas automatizadas a ingeniería de datos.</h1>
+    <p class="lede">16+ años en TI, los últimos 5 en Ericsson automatizando pruebas para sistemas de telecomunicaciones. Ahora aplico la misma disciplina de validación — Python, SQL, pipelines — un paso más arriba, en Data Engineering.</p>
+    <div class="meta-row">
+      <span>Español, nativo</span>
+      <span>Inglés, avanzado (C1)</span>
+      <span>UTC-6</span>
+    </div>
+
+    <div class="pipeline">
+      <div class="stage">
+        <span class="dot"></span>
+        <span class="label">QA Manual</span>
+        <span class="sublabel">2010–2019</span>
+      </div>
+      <div class="stage">
+        <span class="connector"></span>
+        <span class="dot"></span>
+        <span class="label">Automatización</span>
+        <span class="sublabel">2019–2023</span>
+      </div>
+      <div class="stage">
+        <span class="connector"></span>
+        <span class="dot"></span>
+        <span class="label">CI/CD & Quality Gates</span>
+        <span class="sublabel">2023–2025</span>
+      </div>
+      <div class="stage current">
+        <span class="connector"></span>
+        <span class="dot"></span>
+        <span class="label">Validación de Datos</span>
+        <span class="sublabel">Ahora</span>
+      </div>
+      <div class="stage next">
+        <span class="connector"></span>
+        <span class="dot"></span>
+        <span class="label">Data Engineering</span>
+        <span class="sublabel">Siguiente</span>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="assets/cv/Renato-Caceres-CV.pdf" class="btn btn-primary">Descargar CV (PDF)</a>
+      <a href="#projects" class="btn btn-ghost">Ver proyectos</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap-wide">
+    <h2 class="section-title">Sobre mí</h2>
+    <div class="about-text">
+      <p>Llevo 16 años en TI, los últimos cinco dentro de Ericsson, validando sistemas de telecomunicaciones críticos para clientes en EE. UU., Europa y Asia. Ahí aprendí que encontrar un bug importa menos que entender por qué el dato estaba mal desde un inicio.</p>
+      <p>Mi día a día es Python, Selenium y SQL: automatizo suites de regresión, y luego trazo un KPI hacia atrás por todo el pipeline hasta encontrar el contador de origen que no cuadra. Esa costumbre — validar que el dato sea correcto, no solo que el sistema no truene — es la razón por la que estoy moviéndome hacia Data Engineering. Es el mismo trabajo, un poco más arriba en el pipeline.</p>
+      <p>Fuera del trabajo, aplico lo mismo por gusto: construyo pipelines de datos propios con datasets de e-commerce y fútbol, publicados en GitHub, con los mismos problemas reales — nulls, cambios de API, locks de archivos — que aparecen en producción.</p>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap-wide">
+    <h2 class="section-title">Cómo trabajo</h2>
+    <div class="principles">
+      <div class="principle">
+        <span class="tag">Corrección sobre disponibilidad</span>
+        <h3>Un test que pasa no dice que el dato esté bien</h3>
+        <p>Solo dice que el sistema no truena. Validando KPIs 4G/5G, tracé valores de dashboard hasta el contador de origen — hasta que la discrepancia tuviera un nombre, no solo un test en verde.</p>
+      </div>
+      <div class="principle">
+        <span class="tag">Filtros, no reportes</span>
+        <h3>Una suite que corre después del merge llega tarde</h3>
+        <p>Un reporte que nadie lee no sirve. Construyo pipelines en GitLab y Jenkins donde un build defectuoso se detiene antes de avanzar, no se registra para revisar después.</p>
+      </div>
+      <div class="principle">
+        <span class="tag">Automatizar lo que se repite</span>
+        <h3>Si lo hago dos veces, la tercera es un script</h3>
+        <p>200+ casos de prueba en Robot Framework, playbooks de Ansible para apagado/encendido de nodos, flujos en Power Automate reemplazando trabajo manual en SharePoint.</p>
+      </div>
+      <div class="principle">
+        <span class="tag">Construir en público</span>
+        <h3>Mi portafolio de datos no es un certificado de curso</h3>
+        <p>Son cuatro pipelines funcionando en GitHub, con los mismos problemas reales de producción — manejo de nulls, cambios de API, locks de archivos — resueltos, no solo descritos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap-wide">
+    <h2 class="section-title">Experiencia</h2>
+
+    <div class="company-group">
+      <div class="company-name">Ericsson</div>
+      <div class="company-meta">Tiempo completo · 5 años 1 mes · Guatemala</div>
+    </div>
+
+    <div class="job">
+      <div class="job-dates">Dic 2025 – Presente</div>
+      <div>
+        <p class="job-role">IT Engineer — Automatización de Pipelines y Calidad</p>
+        <p class="desc">Integré frameworks de pruebas automatizadas en pipelines CI/CD (GitLab, Jenkins), configurando runners que bloquean builds defectuosos antes de producción.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-dates">Abr – Dic 2025</div>
+      <div>
+        <p class="job-role">RAN Data & Performance Support Engineer</p>
+        <p class="desc">Validé KPIs 4G/5G con SQL y Python, trazando discrepancias desde el dashboard hasta el contador de origen.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-dates">Ago 2024 – Mar 2025</div>
+      <div>
+        <p class="job-role">Automation Developer — Data Workflow & Process Automation</p>
+        <p class="desc">Flujos de automatización con Power Apps y Power Automate; SharePoint como repositorio con trazabilidad de auditoría.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-dates">Feb – Jul 2024</div>
+      <div>
+        <p class="job-role">Network Automation Engineer — Power Outage Automation</p>
+        <p class="desc">Playbooks de Ansible para inventario y secuenciación de apagado/encendido de infraestructura telecom en riesgo de cortes de energía.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-dates">Feb 2023 – Ene 2024</div>
+      <div>
+        <p class="job-role">Cloud-Native QA Engineer — API Test</p>
+        <p class="desc">Ciclo de vida de defectos en Jira/Xray; análisis de logs con Grafana, Kibana y Splunk en entornos Kubernetes.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-dates">Mar 2022 – Ene 2023</div>
+      <div>
+        <p class="job-role">Test Automation Engineer</p>
+        <p class="desc">Estrategia de automatización para integraciones críticas de telecom; scripts de regresión en Python con pytest y Selenium.</p>
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-dates">Jul 2021 – Feb 2022</div>
+      <div>
+        <p class="job-role">IT Engineer / Tester</p>
+        <p class="desc">Casos de prueba funcionales y exploratorios sobre APIs e interfaces web, en ciclos de sprint de 2 semanas bajo Scrum.</p>
+      </div>
+    </div>
+
+    <div class="company-group">
+      <div class="company-name">HCL Technologies — Xerox</div>
+      <div class="company-meta">Sep 2019 – Jul 2021 · Guatemala</div>
+    </div>
+    <div class="job" style="grid-template-columns:1fr;">
+      <p class="desc">Consultor técnico para Xerox Workplace Cloud; UAT funcional para clientes en EE. UU. y Centroamérica, dashboards con Power Platform, integraciones SSO.</p>
+    </div>
+
+    <div class="company-group">
+      <div class="company-name">Conduent — División de Salud</div>
+      <div class="company-meta">Nov 2017 – Sep 2019 · Guatemala</div>
+    </div>
+    <div class="job" style="grid-template-columns:1fr;">
+      <p class="desc">Validación SQL de sistemas de digitalización de documentos médicos; reportes con SSRS; análisis de causa raíz coordinado con equipos en India y Filipinas.</p>
+    </div>
+
+    <p class="earlier-note">Antes: Krones Inc. (2012–2017) — pruebas de API y validación SQL sobre SAP Business One · Sistran (2010–2012) — soporte técnico para plataformas de seguros en Argentina, Colombia y Panamá.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap-wide">
+    <h2 class="section-title">Proyectos</h2>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-head">
+          <h3>E-Commerce DataOps Pipeline</h3>
+          <a class="project-link" href="https://github.com/crcaceres05/ecommerce-dataops-pipeline" target="_blank">GitHub ↗</a>
+        </div>
+        <p>Pipeline end-to-end sobre el dataset público de Olist: ingesta con Python y DuckDB, modelos analíticos en dbt Core, validación de calidad con Great Expectations, orquestación con Airflow, y dashboards en Metabase.</p>
+        <div class="stack-pills">
+          <span class="pill">Python</span><span class="pill">DuckDB</span><span class="pill">dbt Core</span>
+          <span class="pill">Great Expectations</span><span class="pill">Airflow</span><span class="pill">Metabase</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>E-Commerce Databricks Medallion Architecture</h3>
+          <a class="project-link" href="https://github.com/crcaceres05/ecommerce-databricks-medallion" target="_blank">GitHub ↗</a>
+        </div>
+        <p>Extensión del pipeline anterior hacia una arquitectura Medallion (Bronze/Silver/Gold) en Databricks, con Delta Lake para versionado y control de calidad de datos en cada capa.</p>
+        <div class="stack-pills">
+          <span class="pill">Databricks</span><span class="pill">PySpark</span><span class="pill">Delta Lake</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Football Analytics Pipeline</h3>
+        </div>
+        <p>Modelos en dbt sobre datos de la API-Football del Mundial de Qatar 2022, con visualizaciones tácticas hechas con matplotlib y mplsoccer.</p>
+        <div class="stack-pills">
+          <span class="pill">Python</span><span class="pill">dbt</span><span class="pill">API-Football</span><span class="pill">matplotlib</span><span class="pill">mplsoccer</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Guatemala Real-Time Streaming Pipeline</h3>
+        </div>
+        <p>Pipeline de streaming en tiempo real con datos meteorológicos de Guatemala vía OpenWeatherMap, usando Kafka para el transporte de eventos y Streamlit para visualización en vivo.</p>
+        <div class="stack-pills">
+          <span class="pill">Kafka</span><span class="pill">Docker Compose</span><span class="pill">OpenWeatherMap API</span>
+          <span class="pill">DuckDB</span><span class="pill">Streamlit</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap-wide">
+    <h2 class="section-title">Stack</h2>
+    <div class="skills-cols">
+      <div class="skills-col">
+        <h3>Hoy — QA & Automatización</h3>
+        <ul>
+          <li>Python</li><li>Selenium</li><li>Robot Framework</li><li>pytest</li>
+          <li>Postman</li><li>SOAP UI</li><li>JMeter</li><li>SQL</li>
+          <li>GitLab CI/CD</li><li>Jenkins</li><li>Docker</li><li>Kubernetes</li>
+          <li>Grafana</li><li>Kibana</li><li>Splunk</li><li>Jira / Xray</li>
+        </ul>
+      </div>
+      <div class="skills-col learning">
+        <h3>Construyendo — Data Engineering</h3>
+        <ul>
+          <li>dbt</li><li>Airflow</li><li>Databricks</li><li>PySpark</li>
+          <li>Delta Lake</li><li>Great Expectations</li><li>DuckDB</li><li>Kafka</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cert-list">
+      <h3>Certificaciones destacadas</h3>
+      <ul>
+        <li>Astronomer Certification — Apache Airflow Fundamentals (2025)</li>
+        <li>Academy Accreditation — Databricks Fundamentals (2024)</li>
+        <li>LFCA — Linux Foundation Certified IT Associate (2024)</li>
+        <li>KCNA — Kubernetes and Cloud Native Associate (2024)</li>
+        <li>GitLab Certified Git Associate (2022)</li>
+        <li>PCEP — Certified Entry-Level Python Programmer (2022)</li>
+        <li>Microsoft Certified: Azure Database Administrator Associate (2021)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap-wide">
+    <h2 class="section-title">Contacto</h2>
+    <p style="max-width:56ch; color:var(--muted); margin:0 0 26px;">Abierto a roles remotos de QA Automation, Data Quality Engineering o Analytics Engineering, en equipos internacionales.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="k">Email</div>
+        <div class="v"><a href="mailto:crcaceres05@gmail.com">crcaceres05@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="k">Teléfono</div>
+        <div class="v">(502) 4770-5689</div>
+      </div>
+      <div class="contact-item">
+        <div class="k">LinkedIn</div>
+        <div class="v"><a href="https://linkedin.com/in/crcaceres05" target="_blank">linkedin.com/in/crcaceres05</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="k">GitHub</div>
+        <div class="v"><a href="https://github.com/crcaceres05" target="_blank">github.com/crcaceres05</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="k">Ubicación</div>
+        <div class="v">Ciudad de Guatemala, UTC-6</div>
+      </div>
+      <div class="contact-item">
+        <div class="k">CV</div>
+        <div class="v"><a href="assets/cv/Renato-Caceres-CV.pdf">Descargar PDF</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Cesar Renato Cáceres Avendaño
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('#navLinks a').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
